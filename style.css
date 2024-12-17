@@ -193,6 +193,24 @@ button[type="reset"]:hover {
     background-color: #d40812;
     transform: scale(1.1);
 }
+.botoes a button {
+    background-color: #E50914;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    margin: 0 10px; 
+}
+
+.botoes a button:hover {
+    background-color: #d40812; 
+    transform: scale(1.1);
+}
+
+
 .social-links a {
     display: inline-block;
     background-color: #E50914;
