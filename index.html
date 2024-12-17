@@ -11,7 +11,7 @@
   <h1>PobreFlix</h1>
   <div class="botoes">
     <a href="desenvolvedores.html"><button>Desenvolvedores</button></a>
-    <a href="dados.php"><button>Dados Informados</button></a>
+    <a href="dados.php"><button>Dados Cadastrados</button></a>
   </div>
 
   <form id="formulario" action="site.php" method="post">
@@ -40,17 +40,18 @@
       <label><input type="checkbox" name="genero" value="terror"> Terror</label>
       <label><input type="checkbox" name="genero" value="comedia"> Comédia</label>
       <label><input type="checkbox" name="genero" value="romance"> Romance</label>
-      <label><input type="checkbox" id="genero-outro" name="genero" value="outro"> Outro</label>
+      <label><input type="checkbox" id="genero-outro" name="genero" value="outro" onclick="mostrarOutroGeneros()"> Outro</label>
+      <br>
       <input type="text" id="outro-genero" placeholder="Especifique" style="display:none;">
     </div>
 
     <p class="topico">Idioma de Preferência:</p>
     <div>
-      <label><input type="radio" name="idioma" value="portugues" required> Português</label>
-      <label><input type="radio" name="idioma" value="ingles"> Inglês</label>
-      <label><input type="radio" name="idioma" value="espanhol"> Espanhol</label>
-      <label><input type="radio" name="idioma" value="frances"> Francês</label>
-      <label><input type="radio" id="idioma-outro" name="idioma" value="outro"> Outro</label>
+      <label><input type="radio" name="idioma" value="portugues" required onclick="esconderOutroIdioma()"> Português</label>
+      <label><input type="radio" name="idioma" value="ingles" onclick="esconderOutroIdioma()"> Inglês</label>
+      <label><input type="radio" name="idioma" value="espanhol" onclick="esconderOutroIdioma()"> Espanhol</label>
+      <label><input type="radio" name="idioma" value="frances" onclick="esconderOutroIdioma()"> Francês</label>
+      <label><input type="radio" id="idioma-outro" name="idioma" value="outro" onclick="mostrarOutroIdioma()"> Outro</label>
       <input type="text" id="outro-idioma" placeholder="Especifique" style="display:none;">
     </div>
 
@@ -59,7 +60,7 @@
     <input type="email" id="email" name="email" placeholder="exemplo@email.com" required>
 
     <label for="senha" class="topico">Senha:</label>
-    <input type="password" id="senha" name="senha" placeholder="Digite sua senha" required>
+    <input type="password" id="senha" name="senha" placeholder="De 8 a 40 caracteres" required minlength="8" maxlength="40">
     <label><input type="checkbox" onclick="mostrarSenha()"> Mostrar Senha</label>
 
     <p class="topico">Plano de Assinatura:</p>
@@ -75,20 +76,54 @@
       <label><input type="checkbox" name="dispositivo" value="pc"> PC</label>
       <label><input type="checkbox" name="dispositivo" value="tv"> Televisão</label>
       <label><input type="checkbox" name="dispositivo" value="tablet"> Tablet</label>
-      <label><input type="checkbox" id="dispositivo-outro" name="dispositivo" value="outro"> Outro</label>
+      <label><input type="checkbox" id="dispositivo-outro" name="dispositivo" value="outro" onclick="mostrarOutroDispositivo()"> Outro</label>
       <input type="text" id="outro-dispositivo" placeholder="Especifique" style="display:none;">
     </div>
-    
+    <br>
+    <label for="notificacoes" class="topico">Receber Notificações</label>
+<input type="checkbox" id="notificacoes" name="notificacoes">
+<br>
     <br>
     <button type="reset">Resetar</button>
     <button type="submit">Concluir Cadastro</button>
   </form>
 
-  <footer class="rodape-barra-cadastro">
+  <footer class="footer-perso">
     <p><strong>Alunos:</strong> Eduardo Nascimento e Thamyres Rosalina</p>
     <p><strong>Instituição:</strong> IFRN - Campus Santa Cruz</p>
     <p><strong>Orientador:</strong> Marcelo Barbosa</p>
     <p><strong>Disciplina:</strong> Autoria Web (Informática)</p>
-  </footer>
+</footer>
+
+
+  <script>
+    function mostrarSenha() {
+      var senha = document.getElementById("senha");
+      if (senha.type === "password") {
+        senha.type = "text";
+      } else {
+        senha.type = "password";
+      }
+    }
+    function mostrarOutroGeneros() {
+      var generoOutro = document.getElementById("outro-genero");
+      generoOutro.style.display = generoOutro.style.display === "none" ? "block" : "none";
+    }
+
+    function mostrarOutroIdioma() {
+      var idiomaOutro = document.getElementById("outro-idioma");
+      idiomaOutro.style.display = idiomaOutro.style.display === "none" ? "block" : "none";
+    }
+
+    function mostrarOutroDispositivo() {
+      var dispositivoOutro = document.getElementById("outro-dispositivo");
+      dispositivoOutro.style.display = dispositivoOutro.style.display === "none" ? "block" : "none";
+    }
+    function esconderOutroIdioma() {
+      var idiomaOutro = document.getElementById("outro-idioma");
+      idiomaOutro.style.display = "none"; 
+      document.getElementById("idioma-outro").checked = false; 
+    }
+  </script>
 </body>
 </html>
